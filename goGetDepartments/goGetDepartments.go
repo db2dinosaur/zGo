@@ -12,7 +12,7 @@ import (
 func main() {
 
 	/* Use the NewRequest interface to allow us to set all of the headers */
-	url := "http://192.168.225.225:5040/services/GILLJ/GetDepartment"
+	url := "http://192.168.225.225:5040/services/GILLJ/GetDepartments"
 	var auth = "Basic " + b64.StdEncoding.EncodeToString([]byte("GILLJ:sausage"))
 
 	req, err := http.NewRequest("POST", url, nil)
@@ -34,7 +34,7 @@ func main() {
 	if err != nil {
 		log.Println("Error while reading the response bytes:", err)
 	}
-	log.Println(string(body))
+	//	log.Println(string(body))
 
 	var jsonMap map[string]interface{}
 	json.Unmarshal([]byte(body), &jsonMap)
@@ -45,6 +45,7 @@ func main() {
 		rj, err := json.MarshalIndent(jsonMap, "", "  ")
 		if err != nil {
 			log.Fatal("Error marshalling JSON : ", err)
+			os.Exit(11)
 		} else {
 			log.Println(string(rj))
 		}
