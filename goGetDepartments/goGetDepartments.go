@@ -9,15 +9,17 @@ import (
 
 func main() {
 
-	values := map[string]string{"name": "John Doe", "occupation": "gardener"}
-	json_data, err := json.Marshal(values)
+	/*
+		values := map[string]string{"name": "John Doe", "occupation": "gardener"}
+		json_data, err := json.Marshal(values)
 
-	if err != nil {
-		log.Fatal(err)
-	}
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	//resp, err := http.Post("https://httpbin.org/post", "application/json",
-	//    bytes.NewBuffer(json_data))
+		resp, err := http.Post("https://httpbin.org/post", "application/json",
+		    bytes.NewBuffer(json_data))
+	*/
 	resp, err := http.Post("http://192.168.225.225:5040/services/GILLJ/GetDepartment", "application/json", nil)
 
 	if err != nil {
