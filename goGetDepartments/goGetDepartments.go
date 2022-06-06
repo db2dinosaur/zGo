@@ -16,6 +16,7 @@ func main() {
 	req, err := http.NewRequest("POST", url, nil)
 	req.Header.Add("Authorization", auth)
 	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Accept", "application/json")
 
 	// Send the request
 	client := &http.Client{}
