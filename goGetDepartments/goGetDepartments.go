@@ -53,6 +53,8 @@ func main() {
 		}
 	} else {
 		log.Println("ERROR with StatusCode returned : ", jsonMap["StatusCode"])
+		log.Printf("Type = %T\n", jsonMap["StatusCode"])
+		log.Printf("Val  = '%v'\n", jsonMap["StatusCode"])
 	}
 
 }
