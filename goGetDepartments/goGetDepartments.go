@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strconv"
 )
 
 func main() {
@@ -43,18 +42,11 @@ func main() {
 		log.Println("Error marshalling JSON : ", err)
 	}
 	log.Println(string(rj))
-	var statusCode, ok = jsonMap["StatusCode"].(string)
-	if ok {
-		stc, _ := strconv.Atoi(statusCode)
-		if stc == 200 {
-			log.Println("--- OKAY ---")
-		} else {
-			log.Println(">>> FAIL <<<\nStatusCode = ", stc)
-		}
+	var statusCode = jsonMap["StatusCode"].(float64)
+	stc := int(statusCode)
+	if stc == 200 {
+		log.Println("--- OKAY ---")
 	} else {
-		log.Println("ERROR with StatusCode returned : ", jsonMap["StatusCode"])
-		log.Printf("Type = %T\n", jsonMap["StatusCode"])
-		log.Printf("Val  = '%v'\n", jsonMap["StatusCode"])
+		log.Println(">>> FAIL <<<\nStatusCode = ", stc)
 	}
-
 }
