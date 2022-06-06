@@ -43,12 +43,16 @@ func main() {
 		log.Println("Error marshalling JSON : ", err)
 	}
 	log.Println(string(rj))
-	stc, err := strconv.Atoi(jsonMap["StatusCode"])
-	//	statusCode := stc.(map[int]interface{})
-	if stc == 200 {
-		log.Println("--- OKAY ---")
+	var statusCode, ok = jsonMap["StatusCode"].(string)
+	if ok then {
+		stc, err := strconv.Atoi(statusCode)
+		if stc == 200 {
+			log.Println("--- OKAY ---")
+		} else {
+			log.Println(">>> FAIL <<<\nStatusCode = ", stc)
+		}
 	} else {
-		log.Println(">>> FAIL <<<\nStatusCode = ", stc)
+		log.Println("ERROR with StatusCode returned : ", jsonMap["StatusCode"])
 	}
 
 }
