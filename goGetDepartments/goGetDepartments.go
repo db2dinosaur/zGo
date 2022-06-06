@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/base64"
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -32,6 +33,10 @@ func main() {
 	if err != nil {
 		log.Println("Error while reading the response bytes:", err)
 	}
-	log.Println(string([]byte(body)))
+	rj, err := json.MarshalIndent(body, "", "  ")
+	if err != nil {
+		log.Println("Error marshalling JSON : ", err)
+	}
+	log.Println(string(rj))
 
 }
