@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 func main() {
@@ -42,7 +43,7 @@ func main() {
 		log.Println("Error marshalling JSON : ", err)
 	}
 	log.Println(string(rj))
-	stc := jsonMap["StatusCode"]
+	stc, err := strconv.Atoi(jsonMap["StatusCode"])
 	//	statusCode := stc.(map[int]interface{})
 	if stc == 200 {
 		log.Println("--- OKAY ---")
