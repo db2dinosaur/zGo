@@ -11,7 +11,7 @@ import (
 func main() {
 
 	/* Use the NewRequest interface to allow us to set all of the headers */
-	url := "http://192.168.225.225:5040/services/GILLJ/GetDepartments"
+	url := "http://192.168.225.225:5040/services/GILLJ/GetDepartment"
 	var auth = "Basic " + b64.StdEncoding.EncodeToString([]byte("GILLJ:sausage"))
 
 	req, err := http.NewRequest("POST", url, nil)
