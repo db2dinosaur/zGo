@@ -37,16 +37,16 @@ func main() {
 
 	var jsonMap map[string]interface{}
 	json.Unmarshal([]byte(body), &jsonMap)
-	rj, err := json.MarshalIndent(jsonMap, "", "  ")
-	if err != nil {
-		log.Println("Error marshalling JSON : ", err)
-	}
-	log.Println(string(rj))
 	var statusCode = jsonMap["StatusCode"].(float64)
 	stc := int(statusCode)
 	if stc == 200 {
 		log.Println("--- OKAY ---")
 	} else {
-		log.Println(">>> FAIL <<<\nStatusCode = ", stc)
+		log.Fatal(">>> FAIL <<<\nStatusCode = ", stc)
 	}
+	rj, err := json.MarshalIndent(jsonMap, "", "  ")
+	if err != nil {
+		log.Println("Error marshalling JSON : ", err)
+	}
+	log.Println(string(rj))
 }
