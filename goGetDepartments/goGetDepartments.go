@@ -1,36 +1,36 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
+	"encoding/base64"
+	"io/ioutil"
 	"log"
 	"net/http"
 )
 
 func main() {
 
-	/*
-		values := map[string]string{"name": "John Doe", "occupation": "gardener"}
-		json_data, err := json.Marshal(values)
+	/* Use the NewRequest interface to allow us to set all of the headers */
+	url := "http://192.168.225.225:5040/services/GILLJ/GetDepartments"
+	var auth = "Basic " + base64.StdEncoding.EncodeToString([]byte("GILLJ:sausage"))
 
-		if err != nil {
-			log.Fatal(err)
-		}
+	req, err := http.NewRequest("POST", url, nil)
+	req.Header.Add("Authorization", auth)
+	req.Header.Add("Content-Type", "application/json")
 
-		resp, err := http.Post("https://httpbin.org/post", "application/json",
-		    bytes.NewBuffer(json_data))
-	*/
-	resp, err := http.Post("http://192.168.225.225:5040/services/GILLJ/GetDepartment", "application/json", nil)
+	// Send the request
+	client := &http.Client{}
+	resp, err := client.Do(req)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var res map[string]interface{}
+	defer resp.Body.Close()
 
-	fmt.Prinln(resp)
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("Error while reading the response bytes:", err)
+	}
+	log.Println(string([]byte(body)))
 
-	json.NewDecoder(resp.Body).Decode(&res)
-
-	fmt.Println(res["json"])
 }
