@@ -47,7 +47,7 @@ func main() {
 	if stc == 200 {
 		log.Println("--- OKAY ---")
 	} else {
-		log.Println(">>> FAIL <<<")
+		log.Println(">>> FAIL <<<\nStatusCode = ", stc)
 	}
 
 }
