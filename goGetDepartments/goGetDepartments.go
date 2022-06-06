@@ -28,6 +28,8 @@ func main() {
 
 	var res map[string]interface{}
 
+	fmt.Prinln(resp)
+
 	json.NewDecoder(resp.Body).Decode(&res)
 
 	fmt.Println(res["json"])
