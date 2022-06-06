@@ -44,8 +44,8 @@ func main() {
 	}
 	log.Println(string(rj))
 	var statusCode, ok = jsonMap["StatusCode"].(string)
-	if ok then {
-		stc, err := strconv.Atoi(statusCode)
+	if ok {
+		stc, _ := strconv.Atoi(statusCode)
 		if stc == 200 {
 			log.Println("--- OKAY ---")
 		} else {
