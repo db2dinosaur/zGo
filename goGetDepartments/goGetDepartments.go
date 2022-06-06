@@ -33,6 +33,7 @@ func main() {
 	if err != nil {
 		log.Println("Error while reading the response bytes:", err)
 	}
+	log.Println(string(body))
 	rj, err := json.MarshalIndent(body, "", "  ")
 	if err != nil {
 		log.Println("Error marshalling JSON : ", err)
