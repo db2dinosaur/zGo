@@ -42,5 +42,12 @@ func main() {
 		log.Println("Error marshalling JSON : ", err)
 	}
 	log.Println(string(rj))
+	stc := jsonMap["StatusCode"]
+	//	statusCode := stc.(map[int]interface{})
+	if stc == 200 {
+		log.Println("--- OKAY ---")
+	} else {
+		log.Println(">>> FAIL <<<")
+	}
 
 }
