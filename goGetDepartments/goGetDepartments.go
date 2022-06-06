@@ -18,7 +18,7 @@ func main() {
 
 	//resp, err := http.Post("https://httpbin.org/post", "application/json",
 	//    bytes.NewBuffer(json_data))
-	resp, err := http.Post("http://192.168.225.225:5040/services/GILLJ/GetDepartment")
+	resp, err := http.Post("http://192.168.225.225:5040/services/GILLJ/GetDepartment", "application/json", nil)
 
 	if err != nil {
 		log.Fatal(err)
