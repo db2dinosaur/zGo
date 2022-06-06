@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -49,5 +50,6 @@ func main() {
 		}
 	} else {
 		log.Fatal(">>> FAIL <<<\nStatusCode = ", stc)
+		os.Exit(12)
 	}
 }
