@@ -11,10 +11,22 @@ import (
 )
 
 func main() {
-
+	ep := len(os.Args)
+	if ep > 3 {
+		ep = 3
+	}
+	args := os.Args[1:ep]
+	mgr := ""
+	dept := ""
+	if ep > 2 {
+		mgr = args[1]
+	}
+	if ep > 1 {
+		dept = args[0]
+	}
 	jsonReq := []byte(`{
-		"mgr": "000010",
-		"dept":"A00"
+		"mgr": "` + mgr + `",
+		"dept":"` + dept + `"
 	}`)
 
 	/* Use the NewRequest interface to allow us to set all of the headers */
