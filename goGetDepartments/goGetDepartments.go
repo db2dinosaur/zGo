@@ -41,12 +41,13 @@ func main() {
 	stc := int(statusCode)
 	if stc == 200 {
 		log.Println("--- OKAY ---")
+		rj, err := json.MarshalIndent(jsonMap, "", "  ")
+		if err != nil {
+			log.Fatal("Error marshalling JSON : ", err)
+		} else {
+			log.Println(string(rj))
+		}
 	} else {
 		log.Fatal(">>> FAIL <<<\nStatusCode = ", stc)
 	}
-	rj, err := json.MarshalIndent(jsonMap, "", "  ")
-	if err != nil {
-		log.Println("Error marshalling JSON : ", err)
-	}
-	log.Println(string(rj))
 }
