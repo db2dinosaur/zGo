@@ -7,7 +7,7 @@ import (
 )
 
 func timestamp(now time.Time) string {
-  rv := fmt.Sprintf("%04d-%02d-%02d %02d-%02d-%02d",now.Year(),now.Month(),now.Day(),now.Hour(),now.Minute(),now.Second())
+  rv := fmt.Sprintf("%04d-%02d-%02d %02d:%02d:%02d",now.Year(),now.Month(),now.Day(),now.Hour(),now.Minute(),now.Second())
   return(rv)
 }
 
