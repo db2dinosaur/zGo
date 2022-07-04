@@ -20,11 +20,5 @@ func reqHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
   http.HandleFunc("/",reqHandler)
-/*    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        now := time.Now()
-        qry := r.URL.Query()
-        fmt.Fprintf(w, "[%s] - Hello, you've requested: %s\nQuery = %s\n",timestamp(now), r.URL.Path,qry)
-    })
-*/
-    http.ListenAndServe(":9999", nil)
+  http.ListenAndServe(":9999", nil)
 }
