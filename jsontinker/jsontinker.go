@@ -8,20 +8,25 @@ import (
 
 func main() {
 	fname := "config.json"
+	userid := "<<unknown>>"
+	password := "<<unknown>>"
+	host := "<<unknown>>"
+	port := "<<unknown>>"
+	dbname := "<<unknown>>"
 	var jsonMap map[string]interface{}
 	pdata, err := ioutil.ReadFile(fname)
 	if err != nil {
 		fmt.Println("ReadFile error : ", err)
 	} else {
-		err = json.Unmarshall([]byte(pdata), &jsonMap)
+		err = json.Unmarshal([]byte(pdata), &jsonMap)
 		if err != nil {
-			fmt.Println("Unmarshall error : ", err)
+			fmt.Println("Unmarshal error : ", err)
 		} else {
-			userid = jsonMap["userid"]
-			password = jsonMap["password"]
-			host = jsonMap["host"]
-			port = jsonMap["port"]
-			dbname = jsonMap["dbname"]
+			userid = jsonMap["userid"].(string)
+			password = jsonMap["password"].(string)
+			host = jsonMap["host"].(string)
+			port = jsonMap["port"].(string)
+			dbname = jsonMap["dbname"].(string)
 		}
 	}
 	fmt.Println("Values retrieved from ", fname)
