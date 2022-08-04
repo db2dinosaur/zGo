@@ -9,5 +9,7 @@ Some tinkering in Go on z/OS. The first three items are from the language introd
 * goGetEmpByDept - an HTTP REST call to DB2 for z/OS to get a list of employees in or managing a department (cf EMP table). This call takes parms:
     + dept = department ID (see goGetDepartments output)
     + mgr  = manager employee ID (again, see goGetDepartments output)
+* goweb - a very simple web server that returns a timestamped message with the URL path and parms
+* gowebs - an https version of goweb
 
 NEXT - do the goGet... but using certificates/https. This will require us to setup SECPORT in DB2T.
