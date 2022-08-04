@@ -9,7 +9,7 @@ import (
 func main() {
 	fname := "config.json"
 	var jsonMap map[string]interface{}
-	pdata, err = ioutil.ReadFile(fname)
+	pdata, err := ioutil.ReadFile(fname)
 	if err != nil {
 		fmt.Println("ReadFile error : ", err)
 	} else {
