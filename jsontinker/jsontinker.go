@@ -1,7 +1,7 @@
-package mains
+package main
 
 import (
-	json "encoding/json"package jsontinker
+	json "encoding/json"
 	"fmt"
 )
 
